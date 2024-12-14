@@ -59,7 +59,7 @@ function App() {
       path: "/",
       element: <MainNav />,
       children: [
-        { path: "/aform", element: <Login /> },
+        { path: "/", element: <Login /> },
         { path: "/signup", element: <SignUpPage /> },
         { path: "/aform", element: <Aform /> },
         { path: "/aform/:form", element: <Forms /> },
