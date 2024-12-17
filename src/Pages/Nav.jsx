@@ -23,6 +23,18 @@ export default function MainNav() {
         <ul className="flex justify-center items-center w-max gap-8 text-[#68C5DB]">
           <Link>Price Match</Link>
           <Link to={"aform"}>Form</Link>
+          <Link to={"pp"}>Push/pull</Link>
+          <Link to={"refunds"}>refunds</Link>
+          <Link to={"WE"}>warehouse error</Link>
+          <Link to={"listing"}>Listings</Link>
+          <Link to={"DEF"}>DEF</Link>
+          <Link to={"ref"}>REF</Link>
+          <Link to={"SS"}>Saved Sale</Link>
+          <Link to={"SPA"}>taco speakers</Link>
+          <Link to={"CC"}>Contact Customers</Link>
+          <Link to={"pwdc"}>parts we dont carry</Link>
+          <Link to={"userControl"}>Slave control</Link>
+
           {loggedIn ? (
             <button onClick={handleClick}>
               <Link to={"/"}> Sign Out </Link>

@@ -1,5 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
-import { RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainNav from "./Pages/Nav";
 import HomePage from "./Pages/Home";
 import Login from "./Pages/Login";
@@ -33,14 +32,14 @@ function App() {
           if (decodedToken.exp < currentTime) {
             console.log("Token has expired.");
             localStorage.removeItem("authToken"); // Remove expired token
-            window.location.href = "/login"; // Redirect to login page
+            window.location.href = "/aform/login"; // Redirect to login page
           } else {
             console.log("Token is valid:", decodedToken);
           }
         } catch (err) {
           console.error("Error decoding token:", err.message);
           localStorage.removeItem("authToken"); // Cleanup in case of invalid token
-          window.location.href = "/login"; // Redirect to login page
+          window.location.href = "/aform/login"; // Redirect to login page
         }
       }
     };
@@ -54,30 +53,35 @@ function App() {
     // Clean up the interval when the component is unmounted
     return () => clearInterval(interval);
   }, []); // Run on mount
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <MainNav />,
-      children: [
-        { path: "/", element: <Login /> },
-        { path: "/signup", element: <SignUpPage /> },
-        { path: "/aform", element: <Aform /> },
-        { path: "/aform/:form", element: <Forms /> },
-        { path: "/userControl", element: <User /> },
-        { path: "/refunds", element: <RefundsForm /> },
-        { path: "/pp", element: <PP /> },
-        { path: "/we", element: <WE /> },
-        { path: "/lost", element: <Lost /> },
-        { path: "/listing", element: <Listing /> },
-        { path: "/ref", element: <Ref /> },
-        { path: "/pwdc", element: <PWDC /> },
-        { path: "/SS", element: <Saved /> },
-        { path: "/SPA", element: <SPA /> },
-        { path: "/CC", element: <Contact /> },
-        { path: "/DEF", element: <DEF /> },
-      ],
-    },
-  ]);
+
+  const router = createBrowserRouter(
+    [
+      {
+        path: "/",
+        element: <MainNav />,
+        children: [
+          { path: "/", element: <Login /> },
+          { path: "/signup", element: <SignUpPage /> },
+          { path: "/aform", element: <Aform /> },
+          { path: "/aform/:form", element: <Forms /> },
+          { path: "/userControl", element: <User /> },
+          { path: "/refunds", element: <RefundsForm /> },
+          { path: "/pp", element: <PP /> },
+          { path: "/we", element: <WE /> },
+          { path: "/lost", element: <Lost /> },
+          { path: "/listing", element: <Listing /> },
+          { path: "/ref", element: <Ref /> },
+          { path: "/pwdc", element: <PWDC /> },
+          { path: "/SS", element: <Saved /> },
+          { path: "/SPA", element: <SPA /> },
+          { path: "/CC", element: <Contact /> },
+          { path: "/DEF", element: <DEF /> },
+        ],
+      },
+    ],
+    { basename: "/aform" } // Set the base URL for the app
+  );
+
   return <RouterProvider router={router} />;
 }
 

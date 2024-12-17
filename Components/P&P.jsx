@@ -50,7 +50,7 @@ export default function PP() {
 
       alert("form submitted!");
 
-      window.location.href = "/aform";
+      window.location.href = "/aform/aform/";
     } catch (e) {
       setErrorMessage(e.message);
       console.log(e.message);

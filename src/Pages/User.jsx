@@ -33,6 +33,7 @@ export default function User() {
   useEffect(() => {
     fetchUsers();
   }, []);
+  console.log(users);
 
   const handleChange = async (email, event) => {
     const newRole = event.target.value;
@@ -51,7 +52,6 @@ export default function User() {
         throw new Error("Failed to update role.");
       }
 
-      
       setUsers((prevUsers) =>
         prevUsers.map((user) =>
           user.emailusers === email ? { ...user, role: newRole } : user

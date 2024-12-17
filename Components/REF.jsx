@@ -35,6 +35,7 @@ export default function Ref() {
         throw new Error("failed to fetch");
       }
       alert("Submitted Succesfully");
+      window.location.href = "/aform/aform/";
     } catch (e) {
       setErrorMessage(e.message);
     }

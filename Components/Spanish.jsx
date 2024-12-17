@@ -36,7 +36,7 @@ export default function Spanish() {
         throw new Error("Failed to fetch");
       }
       alert("Submitted succesfully");
-      window.location.href = "/aform";
+      window.location.href = "/aform/aform/";
     } catch (err) {
       setErrorMessage(err.message);
     }

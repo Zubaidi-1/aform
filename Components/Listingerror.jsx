@@ -1,8 +1,10 @@
 import { jwtDecode } from "jwt-decode";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Lerror() {
   const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     orderNo: "",
@@ -49,6 +51,7 @@ export default function Lerror() {
         throw new Error("failed to fetch");
       }
       alert("form submitted!");
+      navigate("/aform");
     } catch (e) {
       setErrorMessage(e.message);
     }

@@ -61,7 +61,7 @@ export default function Lost() {
       }
 
       alert("form submitted");
-      window.location.href = "/aform";
+      window.location.href = "/aform/aform/";
       console.log(response);
     } catch (e) {
       console.log(e, "error");

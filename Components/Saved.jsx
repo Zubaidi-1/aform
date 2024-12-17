@@ -40,7 +40,7 @@ export default function Saved() {
         throw new Error("Failed to post");
       }
       alert("Form submit successfully");
-      window.location.href = "/aform";
+      window.location.href = "/aform/aform/";
     } catch (e) {
       setErrorMessage(e.message);
     }
