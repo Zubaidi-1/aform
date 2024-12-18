@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 export default function MainNav() {
   const [loggedIn, setLoggedIn] = useState(true);
   const token = localStorage.getItem("authToken");
-  console.log(token);
+  console.log(token, "hi");
+  console.log("what");
 
   useEffect(() => {
     if (token) {
