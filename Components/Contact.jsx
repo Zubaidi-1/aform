@@ -23,19 +23,22 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3001/aform/CC", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          email: email,
-          orderNo: formData.orderNo,
-          phoneNumber: formData.phoneNumber,
-          reason: formData.reason,
-        }),
-      });
+      const response = await fetch(
+        "https://backendaform-production.up.railway.app/aform/CC",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            email: email,
+            orderNo: formData.orderNo,
+            phoneNumber: formData.phoneNumber,
+            reason: formData.reason,
+          }),
+        }
+      );
       if (!response.ok) {
         throw new Error("failed to submit");
       }

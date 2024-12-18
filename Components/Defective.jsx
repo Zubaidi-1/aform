@@ -47,13 +47,16 @@ export default function Defective() {
       formDataToSend.append("image", formData.image);
       console.log({ formDataToSend });
 
-      const response = await fetch("http://localhost:3001/aform/DEF", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: formDataToSend,
-      });
+      const response = await fetch(
+        "https://backendaform-production.up.railway.app/aform/DEF",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          body: formDataToSend,
+        }
+      );
 
       if (!response.ok) {
         throw new Error("failed to submit");

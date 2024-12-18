@@ -17,18 +17,21 @@ export default function Ref() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3001/aform/REF", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          email: email,
-          orderNo: formData.orderNo,
-          RFR: formData.rfr,
-        }),
-      });
+      const response = await fetch(
+        "https://backendaform-production.up.railway.app/aform/REF",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            email: email,
+            orderNo: formData.orderNo,
+            RFR: formData.rfr,
+          }),
+        }
+      );
       console.log(response);
 
       if (!response.ok) {

@@ -26,22 +26,25 @@ export default function PP() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:3001/aform/P&P", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          email: email,
-          order: formData.order,
-          partNumber: formData.partNumber,
-          reman: formData.reman,
-          warehouse: formData.warehouse,
-          pushpull: formData.pushpull,
-          tracking: formData.tracking,
-        }),
-      });
+      const response = await fetch(
+        "https://backendaform-production.up.railway.app/aform/P&P",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            email: email,
+            order: formData.order,
+            partNumber: formData.partNumber,
+            reman: formData.reman,
+            warehouse: formData.warehouse,
+            pushpull: formData.pushpull,
+            tracking: formData.tracking,
+          }),
+        }
+      );
       console.log(response);
 
       if (!response.ok) {

@@ -9,9 +9,12 @@ export default function PP() {
 
   const fetchPP = async () => {
     try {
-      const response = await fetch("http://localhost:3001/aform/P&P", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await fetch(
+        "https://backendaform-production.up.railway.app/aform/P&P",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -50,18 +53,21 @@ export default function PP() {
     console.log(checked[2]);
 
     try {
-      const response = await fetch("http://localhost:3001/pp", {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          request: type,
-          finished: newFinishedValue,
-          id: id,
-        }),
-      });
+      const response = await fetch(
+        "https://backendaform-production.up.railway.app/pp",
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            request: type,
+            finished: newFinishedValue,
+            id: id,
+          }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("failed to fetch");

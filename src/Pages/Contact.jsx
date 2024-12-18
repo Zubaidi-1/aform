@@ -33,18 +33,21 @@ export default function Contact() {
         : false;
 
     try {
-      const result = await fetch("http://localhost:3001/CC", {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          request: type,
-          finished: newFinishedValue,
-          id: id,
-        }),
-      });
+      const result = await fetch(
+        "https://backendaform-production.up.railway.app/CC",
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            request: type,
+            finished: newFinishedValue,
+            id: id,
+          }),
+        }
+      );
       if (!result.ok) {
         throw new Error("failed to update");
       }
@@ -63,12 +66,15 @@ export default function Contact() {
 
   const fetchCC = async () => {
     try {
-      const results = await fetch("http://localhost:3001/CC", {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const results = await fetch(
+        "https://backendaform-production.up.railway.app/CC",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       if (!results.ok) {
         throw new Error("Failed to fetch");

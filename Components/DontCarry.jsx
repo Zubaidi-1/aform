@@ -20,18 +20,21 @@ export default function Carry() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3001/aform/PWDC", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          email: email,
-          partName: formData.partName,
-          specs: formData.specs,
-        }),
-      });
+      const response = await fetch(
+        "https://backendaform-production.up.railway.app/aform/PWDC",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            email: email,
+            partName: formData.partName,
+            specs: formData.specs,
+          }),
+        }
+      );
       if (!response.ok) {
         throw new Error("failed to submit");
       }

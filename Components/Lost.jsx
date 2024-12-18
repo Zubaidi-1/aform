@@ -48,13 +48,16 @@ export default function Lost() {
       formDataToSend.append("image", formData.image); // Append the image file
       console.log({ formDataToSend });
 
-      const response = await fetch("http://localhost:3001/aform/Lost", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: formDataToSend,
-      });
+      const response = await fetch(
+        "https://backendaform-production.up.railway.app/aform/Lost",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          body: formDataToSend,
+        }
+      );
 
       if (!response.ok) {
         throw new Error("failed to submit");

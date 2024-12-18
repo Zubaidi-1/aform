@@ -20,16 +20,19 @@ export default function Login() {
     try {
       console.log(formData);
 
-      const response = await fetch("http://localhost:3001/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: formData.email,
-          password: formData.password,
-        }),
-      });
+      const response = await fetch(
+        "https://backendaform-production.up.railway.app/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: formData.email,
+            password: formData.password,
+          }),
+        }
+      );
 
       if (response.ok) {
         const data = await response.json();

@@ -8,9 +8,12 @@ export default function User() {
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch("http://localhost:3001/userControl", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await fetch(
+        "https://backendaform-production.up.railway.app/userControl",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
       // Handle access denied response
       if (response.status === 403) {
@@ -39,14 +42,17 @@ export default function User() {
     const newRole = event.target.value;
 
     try {
-      const response = await fetch("http://localhost:3001/userControl", {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ role: newRole, email }),
-      });
+      const response = await fetch(
+        "https://backendaform-production.up.railway.app/userControl",
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ role: newRole, email }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to update role.");

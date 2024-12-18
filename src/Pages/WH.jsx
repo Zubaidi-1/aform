@@ -16,9 +16,12 @@ export default function WE() {
 
   const fetchWE = async () => {
     try {
-      const response = await fetch("http://localhost:3001/aform/WE", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await fetch(
+        "https://backendaform-production.up.railway.app/aform/WE",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -56,18 +59,21 @@ export default function WE() {
         : false;
 
     try {
-      const response = await fetch("http://localhost:3001/WE", {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          request: type,
-          finished: newFinishedValue,
-          id: id,
-        }),
-      });
+      const response = await fetch(
+        "https://backendaform-production.up.railway.app/WE",
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            request: type,
+            finished: newFinishedValue,
+            id: id,
+          }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("failed to fetch");

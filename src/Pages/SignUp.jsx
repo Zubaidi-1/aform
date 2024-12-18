@@ -20,17 +20,20 @@ export default function SignUpPage() {
 
     try {
       // Send data to the backend
-      const response = await fetch("http://localhost:3001/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: formData.email,
-          password: formData.password,
-          confirm: formData.confirm,
-        }),
-      });
+      const response = await fetch(
+        "https://backendaform-production.up.railway.app/signup",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: formData.email,
+            password: formData.password,
+            confirm: formData.confirm,
+          }),
+        }
+      );
 
       if (response.ok) {
         console.log(response.status);

@@ -72,12 +72,15 @@ export default function DEF() {
 
   const fetchDEF = async () => {
     try {
-      const results = await fetch("http://localhost:3001/DEF", {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const results = await fetch(
+        "https://backendaform-production.up.railway.app/DEF",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       if (!results.ok) {
         throw new Error("Failed to fetch");

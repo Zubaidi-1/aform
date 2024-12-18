@@ -20,18 +20,21 @@ export default function Spanish() {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      const response = await fetch("http://localhost:3001/aform/SPA", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          orderNo: formData.orderNo,
-          phoneNumber: formData.phoneNumber,
-          email: email,
-        }),
-      });
+      const response = await fetch(
+        "https://backendaform-production.up.railway.app/aform/SPA",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            orderNo: formData.orderNo,
+            phoneNumber: formData.phoneNumber,
+            email: email,
+          }),
+        }
+      );
       if (!response.ok) {
         throw new Error("Failed to fetch");
       }

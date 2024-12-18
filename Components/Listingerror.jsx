@@ -31,22 +31,25 @@ export default function Lerror() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3001/aform/LE", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          email: email,
-          orderNo: formData.orderNo,
-          listing: formData.listing,
-          description: formData.description,
-          errorType: formData.errorType,
-          error: formData.error,
-          platform: formData.platform,
-        }),
-      });
+      const response = await fetch(
+        "https://backendaform-production.up.railway.app/aform/LE",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            email: email,
+            orderNo: formData.orderNo,
+            listing: formData.listing,
+            description: formData.description,
+            errorType: formData.errorType,
+            error: formData.error,
+            platform: formData.platform,
+          }),
+        }
+      );
       if (!response.ok) {
         throw new Error("failed to fetch");
       }
