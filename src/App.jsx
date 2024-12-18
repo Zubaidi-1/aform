@@ -54,33 +54,30 @@ function App() {
     return () => clearInterval(interval);
   }, []); // Run on mount
 
-  const router = createBrowserRouter(
-    [
-      {
-        path: "/",
-        element: <MainNav />,
-        children: [
-          { path: "/", element: <Login /> },
-          { path: "/signup", element: <SignUpPage /> },
-          { path: "/aform", element: <Aform /> },
-          { path: "/aform/:form", element: <Forms /> },
-          { path: "/userControl", element: <User /> },
-          { path: "/refunds", element: <RefundsForm /> },
-          { path: "/pp", element: <PP /> },
-          { path: "/we", element: <WE /> },
-          { path: "/lost", element: <Lost /> },
-          { path: "/listing", element: <Listing /> },
-          { path: "/ref", element: <Ref /> },
-          { path: "/pwdc", element: <PWDC /> },
-          { path: "/SS", element: <Saved /> },
-          { path: "/SPA", element: <SPA /> },
-          { path: "/CC", element: <Contact /> },
-          { path: "/DEF", element: <DEF /> },
-        ],
-      },
-    ],
-    { basename: "/aform" }
-  );
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <MainNav />,
+      children: [
+        { path: "/", element: <Login /> },
+        { path: "/signup", element: <SignUpPage /> },
+        { path: "/aform", element: <Aform /> },
+        { path: "/aform/:form", element: <Forms /> },
+        { path: "/userControl", element: <User /> },
+        { path: "/refunds", element: <RefundsForm /> },
+        { path: "/pp", element: <PP /> },
+        { path: "/we", element: <WE /> },
+        { path: "/lost", element: <Lost /> },
+        { path: "/listing", element: <Listing /> },
+        { path: "/ref", element: <Ref /> },
+        { path: "/pwdc", element: <PWDC /> },
+        { path: "/SS", element: <Saved /> },
+        { path: "/SPA", element: <SPA /> },
+        { path: "/CC", element: <Contact /> },
+        { path: "/DEF", element: <DEF /> },
+      ],
+    },
+  ]);
 
   return <RouterProvider router={router} />;
 }
