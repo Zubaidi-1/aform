@@ -6,7 +6,7 @@ export default function MainNav() {
 
   useEffect(() => {
     const token = localStorage.getItem("authToken");
-    console.log(token);
+    console.log(token, "whatev");
 
     if (token) {
       setLoggedIn(true);
