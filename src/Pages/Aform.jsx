@@ -1,11 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../Components/auth";
 export default function Aform() {
-  useAuth();
   const token = localStorage.getItem("authToken");
 
   const navigate = useNavigate();
-  console.log(token, "its me ! token!");
 
   return (
     <div className="relative flex flex-col items-center min-h-screen bg-[#02182b]">
