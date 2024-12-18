@@ -40,7 +40,7 @@ export default function Login() {
         console.log("Token:", data.token);
         console.log("User ID:", data.userId);
         localStorage.setItem("authToken", data.token);
-        navigate("/aform/aform");
+        navigate("/aform/");
         // window.location.href = "";
       } else if (response.status === 422) {
         const data = await response.json();
