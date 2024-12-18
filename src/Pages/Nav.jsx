@@ -1,18 +1,18 @@
 import { Link, Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
+
 export default function MainNav() {
-  const [loggedIn, setLoggedIn] = useState(true);
-  const token = localStorage.getItem("authToken");
-  console.log(token, "hi");
-  console.log("what");
+  const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
+    const token = localStorage.getItem("authToken");
     if (token) {
       setLoggedIn(true);
     } else {
       setLoggedIn(false);
     }
-  }, [loggedIn]);
+  }, []); // Empty dependency array to run only once on mount
+
   const handleClick = () => {
     localStorage.removeItem("authToken");
     setLoggedIn(false);
