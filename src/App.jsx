@@ -79,7 +79,7 @@ function App() {
         ],
       },
     ],
-    { basename: "/aform/" }
+    { basename: "/aform" }
   );
 
   return <RouterProvider router={router} />;
