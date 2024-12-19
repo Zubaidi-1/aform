@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import MainNav from "./Pages/Nav";
 import HomePage from "./Pages/Home";
 import Login from "./Pages/Login";
@@ -54,7 +54,7 @@ function App() {
     return () => clearInterval(interval);
   }, []); // Run on mount
 
-  const router = createBrowserRouter(
+  const router = createHashRouter(
     [
       {
         path: "/",
