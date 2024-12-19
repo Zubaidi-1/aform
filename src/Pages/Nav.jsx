@@ -1,23 +1,22 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-export default function MainNav() {
+export default function MainNav({ token }) {
   const [loggedIn, setLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("authToken");
-    console.log(token, "whatev");
-
     if (token) {
       setLoggedIn(true);
     } else {
       setLoggedIn(false);
     }
-  }, []); // Empty dependency array to run only once on mount
+  }, [token]); // Updates when the token changes
 
   const handleClick = () => {
     localStorage.removeItem("authToken");
     setLoggedIn(false);
+    navigate("/"); // Redirect to home after sign out
   };
 
   return (
@@ -27,22 +26,22 @@ export default function MainNav() {
           <Link>Price Match</Link>
           <Link to={"aform"}>Form</Link>
           <Link to={"pp"}>Push/pull</Link>
-          <Link to={"refunds"}>refunds</Link>
-          <Link to={"WE"}>warehouse error</Link>
+          <Link to={"refunds"}>Refunds</Link>
+          <Link to={"WE"}>Warehouse Error</Link>
           <Link to={"listing"}>Listings</Link>
           <Link to={"DEF"}>DEF</Link>
           <Link to={"ref"}>REF</Link>
           <Link to={"SS"}>Saved Sale</Link>
-          <Link to={"SPA"}>taco speakers</Link>
+          <Link to={"SPA"}>Taco Speakers</Link>
           <Link to={"CC"}>Contact Customers</Link>
-          <Link to={"pwdc"}>parts we dont carry</Link>
-          <Link to={"userControl"}>Slave control</Link>
+          <Link to={"pwdc"}>Parts We Don’t Carry</Link>
+          <Link to={"userControl"}>Slave Control</Link>
 
-          {loggedIn ? (
+          {loggedIn && (
             <button onClick={handleClick}>
-              <Link to={"/"}> Sign Out </Link>
+              <Link to={"/"}>Sign Out</Link>
             </button>
-          ) : null}
+          )}
         </ul>
       </div>
       <Outlet />

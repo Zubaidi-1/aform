@@ -5,7 +5,7 @@ import SignUpPage from "./Pages/SignUp";
 import Aform from "./Pages/Aform";
 import Forms from "./Pages/Forms";
 import { jwtDecode } from "jwt-decode";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import RefundsForm from "./Pages/RefundForm";
 import User from "./Pages/User";
 import PP from "./Pages/PP";
@@ -18,8 +18,11 @@ import Saved from "./Pages/Saved";
 import SPA from "./Pages/SPA";
 import Contact from "./Pages/Contact";
 import DEF from "./Pages/DEF";
+import HomePage from "./Pages/Home";
 
 function App() {
+  const [token, setToken] = useState(localStorage.getItem("authToken"));
+
   useEffect(() => {
     const checkTokenExpiry = () => {
       const token = localStorage.getItem("authToken");
@@ -38,7 +41,7 @@ function App() {
         } catch (err) {
           console.error("Error decoding token:", err.message);
           localStorage.removeItem("authToken"); // Cleanup in case of invalid token
-          window.location.href = "login"; // Redirect to login page
+          window.location.href = "/login"; // Redirect to login page
         }
       }
     };
@@ -56,7 +59,7 @@ function App() {
   const router = createHashRouter([
     {
       path: "/",
-      element: <MainNav />,
+      element: token ? <MainNav token={token} /> : <MainNav token={false} />,
       children: [
         { path: "/", element: <Login /> },
         { path: "signup", element: <SignUpPage /> },
