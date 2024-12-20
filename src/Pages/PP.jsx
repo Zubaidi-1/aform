@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-
+import { useNavigate } from "react-router-dom";
 export default function PP() {
   const [pp, setPP] = useState([]);
   const [error, setError] = useState();
   const [checked, setChecked] = useState({});
-
+  const navigate = useNavigate();
   const token = localStorage.getItem("authToken");
 
   const fetchPP = async () => {
@@ -21,6 +21,7 @@ export default function PP() {
 
       const data = await response.json();
       setPP(data.pp);
+      navigate("/aform");
     } catch (err) {
       console.error("Failed to fetch push and pull:", err.message);
       setError(err.message);
