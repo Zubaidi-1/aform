@@ -4,7 +4,7 @@ import Login from "./Pages/Login";
 import SignUpPage from "./Pages/SignUp";
 import Aform from "./Pages/Aform";
 import Forms from "./Pages/Forms";
-import jwtDecode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
 import RefundsForm from "./Pages/RefundForm";
 import User from "./Pages/User";
