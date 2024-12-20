@@ -71,7 +71,6 @@ export default function Werror() {
 
       alert("form submitted");
       navigate("/aform");
-
       console.log(response);
     } catch (e) {
       console.log(e, "error");
