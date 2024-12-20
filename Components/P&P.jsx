@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
+
 export default function PP() {
   const [formData, setFormData] = useState({
     order: "",
@@ -12,6 +14,8 @@ export default function PP() {
 
   const [errorMessage, setErrorMessage] = useState("");
   const token = localStorage.getItem("authToken");
+  const navigate = useNavigate();
+
   const handleChange = function (e) {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
@@ -53,7 +57,7 @@ export default function PP() {
 
       alert("form submitted!");
 
-      window.location.href = "/aform/aform/";
+      navigate("/aform");
     } catch (e) {
       setErrorMessage(e.message);
       console.log(e.message);

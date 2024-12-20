@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 
 export default function Werror() {
   let email;
@@ -8,6 +9,7 @@ export default function Werror() {
     const decoded = jwtDecode(token);
     email = decoded.email;
   }
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     date: "",
@@ -68,6 +70,8 @@ export default function Werror() {
       }
 
       alert("form submitted");
+      navigate("/aform");
+
       console.log(response);
     } catch (e) {
       console.log(e, "error");

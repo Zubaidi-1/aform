@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
+
 export default function Lost() {
   let email;
   const token = localStorage.getItem("authToken");
@@ -7,6 +9,7 @@ export default function Lost() {
     const decoded = jwtDecode(token);
     email = decoded.email;
   }
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     date: "",
@@ -64,7 +67,7 @@ export default function Lost() {
       }
 
       alert("form submitted");
-      window.location.href = "/aform/aform/";
+      navigate("/aform");
       console.log(response);
     } catch (e) {
       console.log(e, "error");

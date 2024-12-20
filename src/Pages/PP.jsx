@@ -21,7 +21,6 @@ export default function PP() {
 
       const data = await response.json();
       setPP(data.pp);
-      navigate("/aform");
     } catch (err) {
       console.error("Failed to fetch push and pull:", err.message);
       setError(err.message);
