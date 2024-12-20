@@ -57,7 +57,7 @@ export default function PP() {
 
       alert("form submitted!");
 
-      navigate("/aform");
+      navigate("/#/aform/");
     } catch (e) {
       setErrorMessage(e.message);
       console.log(e.message);

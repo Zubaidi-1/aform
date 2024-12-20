@@ -67,7 +67,7 @@ export default function Lost() {
       }
 
       alert("form submitted");
-      navigate("/aform");
+      navigate("/#/aform/");
       console.log(response);
     } catch (e) {
       console.log(e, "error");
