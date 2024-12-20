@@ -168,7 +168,7 @@ export default function Lost() {
         {console.log(modalContent?.replace("images\\", ""), "hi")}
         {modalContent ? (
           <img
-            src={`http://localhost:3001/${modalContent.replace(
+            src={`https://backendaform-production.up.railway.app/${modalContent.replace(
               "images\\",
               ""
             )}`}

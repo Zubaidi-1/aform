@@ -163,7 +163,7 @@ export default function DEF() {
         {console.log(modalContent?.replace("images\\", ""), "hi")}
         {modalContent ? (
           <img
-            src={`http://localhost:3001/${modalContent.replace(
+            src={`https://backendaform-production.up.railway.app/${modalContent.replace(
               "images\\",
               ""
             )}`}
