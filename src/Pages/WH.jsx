@@ -17,7 +17,7 @@ export default function WE() {
   const fetchWE = async () => {
     try {
       const response = await fetch(
-        "https://backendaform-production.up.railway.app/WE/aform/WE",
+        "https://backendaform-production.up.railway.app/aform/WE",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
