@@ -32,7 +32,6 @@ export default function SignUpPage() {
             password: formData.password,
             confirm: formData.confirm,
           }),
-          mode: "no-cors",
         }
       );
 
@@ -89,6 +88,7 @@ export default function SignUpPage() {
             onChange={handleChange}
             required
             type="password"
+            autocomplete="new-password"
           />
           <input
             id="confirm"
