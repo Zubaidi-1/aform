@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Modal from "../../Components/Modal";
+
 export default function DEF() {
   const token = localStorage.getItem("authToken");
   const [Def, setDef] = useState([]);
@@ -12,9 +13,12 @@ export default function DEF() {
     setModalContent(image);
     toggleModal();
   };
+
+  // Function to toggle modal visibility
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
+
   const handleToggleCheck = async (id, type) => {
     if (type === "finished") {
       setChecked((prev) => ({
@@ -34,6 +38,7 @@ export default function DEF() {
         },
       }));
     }
+
     const newFinishedValue =
       type === "finished"
         ? !check[id]?.finished
@@ -42,34 +47,40 @@ export default function DEF() {
         : false;
 
     try {
-      const result = await fetch("http://localhost:3001/DEF", {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          request: type,
-          finished: newFinishedValue,
-          id: id,
-        }),
-      });
+      const result = await fetch(
+        "https://backendaform-production.up.railway.app/DEF",
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            request: type,
+            finished: newFinishedValue,
+            id: id,
+          }),
+        }
+      );
       if (!result.ok) {
         throw new Error("failed to update");
       }
       console.log("done");
-
       fetchDEF();
     } catch (e) {
       setErrorMessage(e.message);
     }
   };
+  console.log(modalContent);
+
+  // Function to determine the row color based on finished or wrong states
   const color = (id) => {
     if (Def[id - 1]?.finished) return "bg-green-500";
     if (Def[id - 1]?.wrong) return "bg-red-500";
     return "bg-[#bce0f0]";
   };
 
+  // Fetch DEF data from the API
   const fetchDEF = async () => {
     try {
       const results = await fetch(
@@ -92,6 +103,8 @@ export default function DEF() {
       setErrorMessage(e.errorMessage);
     }
   };
+
+  // Fetch data on component mount
   useEffect(() => {
     fetchDEF();
   }, [token]);
@@ -160,13 +173,9 @@ export default function DEF() {
         </tbody>
       </table>
       <Modal isOpen={isModalOpen} onClose={toggleModal}>
-        {console.log(modalContent?.replace("images\\", ""), "hi")}
         {modalContent ? (
           <img
-            src={`https://backendaform-production.up.railway.app/${modalContent.replace(
-              "images\\",
-              ""
-            )}`}
+            src={`data:image/jpg;base64, ${modalContent}`}
             alt="Modal Content"
             className="w-96 h-96"
           />

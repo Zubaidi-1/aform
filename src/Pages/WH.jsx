@@ -17,7 +17,7 @@ export default function WE() {
   const fetchWE = async () => {
     try {
       const response = await fetch(
-        "https://backendaform-production.up.railway.app/aform/WE",
+        "https://backendaform-production.up.railway.app/WE/aform/WE",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -27,6 +27,7 @@ export default function WE() {
       }
 
       const data = await response.json();
+      console.log(data.WE, "Fetched Data");
       setWE(data.WE);
     } catch (err) {
       console.error("Failed to fetch push and pull:", err.message);
@@ -84,6 +85,7 @@ export default function WE() {
       setError(e.message);
     }
   };
+  console.log(we, "his");
 
   const getRowClass = (id, index) => {
     if (checked[id]?.finished || we[index]?.finished) return "bg-green-300";
@@ -136,7 +138,7 @@ export default function WE() {
                 <td>{we.date}</td>
                 <td>{we["created At"]?.replace("T", " ").replace("Z", "")}</td>
                 <td>
-                  <button onClick={() => openModalWithImage(we.image)}>
+                  <button onClick={() => openModalWithImage(`${we.image}`)}>
                     {we.image ? "See image" : "No image"}
                   </button>
                 </td>
@@ -161,13 +163,9 @@ export default function WE() {
 
       {/* Modal to display the image */}
       <Modal isOpen={isModalOpen} onClose={toggleModal}>
-        {console.log(modalContent?.replace("images\\", ""), "hi")}
         {modalContent ? (
           <img
-            src={`https://backendaform-production.up.railway.app/${modalContent.replace(
-              "images\\",
-              ""
-            )}`}
+            src={`data:image/jpg;base64, ${modalContent}`}
             alt="Modal Content"
             className="w-96 h-96"
           />

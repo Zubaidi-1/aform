@@ -165,13 +165,9 @@ export default function Lost() {
         </tbody>
       </table>
       <Modal isOpen={isModalOpen} onClose={toggleModal}>
-        {console.log(modalContent?.replace("images\\", ""), "hi")}
         {modalContent ? (
           <img
-            src={`https://backendaform-production.up.railway.app/${modalContent.replace(
-              "images\\",
-              ""
-            )}`}
+            src={`data:image/jpg;base64, ${modalContent}`}
             alt="Modal Content"
             className="w-96 h-96"
           />

@@ -54,16 +54,13 @@ export default function Werror() {
       formDataToSend.append("image", formData.image); // Append the image file
       console.log({ formDataToSend });
 
-      const response = await fetch(
-        "https://backendaform-production.up.railway.app/aform/WE",
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          body: formDataToSend, // Send FormData directly as the body
-        }
-      );
+      const response = await fetch("http://localhost:3001/aform/WE", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formDataToSend, // Send FormData directly as the body
+      });
 
       if (!response.ok) {
         throw new Error("failed to submit");
