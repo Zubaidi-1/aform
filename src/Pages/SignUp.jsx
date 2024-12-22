@@ -32,6 +32,7 @@ export default function SignUpPage() {
             password: formData.password,
             confirm: formData.confirm,
           }),
+          mode: "no-cors",
         }
       );
 
