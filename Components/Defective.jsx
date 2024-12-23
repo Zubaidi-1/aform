@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { jwtDecode } from "jwt-decode";
 export default function Defective() {
   let email;
@@ -7,6 +9,7 @@ export default function Defective() {
     const decoded = jwtDecode(token);
     email = decoded.email;
   }
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     date: "",
@@ -63,7 +66,7 @@ export default function Defective() {
       }
 
       alert("form submitted");
-      window.location.href = "/aform";
+      navigate("/#/aform/");
       console.log(response);
     } catch (e) {
       console.log(e, "error");
